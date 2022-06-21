@@ -51,7 +51,7 @@ _cylindr_
 * python cylindr.py -traj traj.trr -top conf.gro -res 2                 - uses a resolution of 2 shells per angstrom (default = 4)
 * python cylindr.py -O foo-traj traj.trr -top conf.gro -R 60            - saves output.npz as 'foo' and uses a radial cutoff of 60 angstroms.
 * python cylindr.py -traj traj.trr -top conf.gro -L 20 -b 10000         - uses a length cutoff of 20 ansgtroms and starts from frame 10000
-* python cylindr.py -traj traj.trr -top conf.gro -e 2500 -vec 0,1,1     - starts from frame 2500 and orients the cylinder length along 0,1,1
+* python cylindr.py -traj traj.trr -top conf.gro -e 2500 -ori user -vec 0,1,1     - stop at frame 2500 and orient the cylinder length along 0,1,1
 * python cylindr.py -traj traj.trr -top conf.gro -sel name -selname F1  - Only atoms whose name is F1 are used in the CDF analysis
 * python cylindr.py -sel element -selelement H                          - Selects by element, in this case hydrogen
 * python cylindr.py -mode hybrid -sel name -selname O6                  - hybrid mode - computes distance between COM of each molecule in turn and all atoms of name "O6". can use -sel element and -selelement in hybrid mode also.
