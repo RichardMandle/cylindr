@@ -119,7 +119,7 @@ def cylindrical_PCF(L_cut, R_cut, Res,Ldist,Rdist): # main CDF engine
 args = initialize().parse_args()
 
 print("running cylindr.py on", platform.system(), platform.release(), platform.version())
-print("Please cite the paper: <<INSERT ARXIV LINK>>")
+print("Please cite the paper: 10.26434/chemrxiv-2022-z9rxk")
 
 # load supplied trajectory (-traj) and topology (-top) with mdtraj
 print("Loading trajectory...")
