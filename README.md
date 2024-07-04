@@ -10,6 +10,7 @@ _cylindr_ optionally saves intermolecular distances for each frame in the trajec
 # Requirements
 * MDtraj (tested on 1.98)
 * numpy (tested using 1.22)
+* fast_histogram
 * Matplotlib (tested using 3.5.1)
 * tqdm
 * pickle
@@ -47,19 +48,19 @@ _cylindr_ optionally saves intermolecular distances for each frame in the trajec
 
 # Usage Examples
 _cylindr_
-* python cylindr.py -traj traj.trr -top conf.gro                        - vanilla; computes the CDF with all default options
-* python cylindr.py -traj traj.trr -top conf.gro -res 2                 - uses a resolution of 2 shells per angstrom (default = 4)
-* python cylindr.py -O foo-traj traj.trr -top conf.gro -R 60            - saves output.npz as 'foo' and uses a radial cutoff of 60 angstroms.
-* python cylindr.py -traj traj.trr -top conf.gro -L 20 -b 10000         - uses a length cutoff of 20 ansgtroms and starts from frame 10000
-* python cylindr.py -traj traj.trr -top conf.gro -e 2500 -ori user -vec 0,1,1     - stop at frame 2500 and orient the cylinder length along 0,1,1
-* python cylindr.py -traj traj.trr -top conf.gro -sel name -selname F1  - Only atoms whose name is F1 are used in the CDF analysis
-* python cylindr.py -sel element -selelement H                          - Selects by element, in this case hydrogen
-* python cylindr.py -mode hybrid -sel name -selname O6                  - hybrid mode - computes distance between COM of each molecule in turn and all atoms of name "O6". can use -sel element and -selelement in hybrid mode also.
+* python main.py -traj traj.trr -top conf.gro                        - vanilla; computes the CDF with all default options
+* python main.py -traj traj.trr -top conf.gro -res 2                 - uses a resolution of 2 shells per angstrom (default = 4)
+* python main.py -O foo-traj traj.trr -top conf.gro -R 60            - saves output.npz as 'foo' and uses a radial cutoff of 60 angstroms.
+* python main.py -traj traj.trr -top conf.gro -L 20 -b 10000         - uses a length cutoff of 20 ansgtroms and starts from frame 10000
+* python main.py -traj traj.trr -top conf.gro -e 2500 -ori user -vec 0,1,1     - stop at frame 2500 and orient the cylinder length along 0,1,1
+* python main.py -traj traj.trr -top conf.gro -sel name -selname F1  - Only atoms whose name is F1 are used in the CDF analysis
+* python main.py -sel element -selelement H                          - Selects by element, in this case hydrogen
+* python main.py -mode hybrid -sel name -selname O6                  - hybrid mode - computes distance between COM of each molecule in turn and all atoms of name "O6". can use -sel element and -selelement in hybrid mode also.
 
 _plotting_ and _output_
-* python cylindr.py -traj traj.trr -top conf.gro -min 1 -max 5          - -min and -max set the minimum and maximum values of the colormap in the CDF plot
-* python cylindr.py -traj traj.xtc -top conf.gro -log yes               - use a log normalised colormap in the CDF plot
-* python cylindr.py -traj dump.traj -top conf.gro -save yes             - -save yes dumps distance matrix data as a .npz file, can be read by _lookup.py_ to return pair indicies over a specified length range for visualisation/lifetime anlysis
+* python main.py -traj traj.trr -top conf.gro -min 1 -max 5          - -min and -max set the minimum and maximum values of the colormap in the CDF plot
+* python main.py -traj traj.xtc -top conf.gro -log yes               - use a log normalised colormap in the CDF plot
+* python main.py -traj dump.traj -top conf.gro -save yes             - -save yes dumps distance matrix data as a .npz file, can be read by _lookup.py_ to return pair indicies over a specified length range for visualisation/lifetime anlysis
  
 _lookup_
 * python lookup.py -i foo -L 20,21.2 -R 6,6.5                           - return pair indicies in the length range 20 to 21 angstrom, radius range 6 to 6.5 angstrom.
