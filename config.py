@@ -11,7 +11,7 @@ class Config:
         # input and output file names
         self.parser.add_argument('-top', '--topology', default='', type=str, help='Input topology filename')
         self.parser.add_argument('-traj', '--trajectory', default='', type=str, help='Input trajectory filename')
-        self.parser.add_argument('-o', '--output_name', default='', type=str, help='name used for output CDF plots')
+        self.parser.add_argument('-o', '--output_name', default='noname', type=str, help='name used for output CDF plots')
         self.parser.add_argument('-replot', '--replot', action='store_true', help='Replot from saved data; specify pickle file to read with -o flag.')
 
         # atom/molecule/residue selection arguments
@@ -19,10 +19,11 @@ class Config:
         self.parser.add_argument('-sel', '--selection', default='com', type=str, help='Selection type; defaults to centre of mass (COM). selecting "name" or "element" requires additional -selname or -selelement input.')
         self.parser.add_argument('-selname', '--selection_name', default='', type=str, help='Used when -sel is "name"; pass atom name(s) as string, e.g. C1, O4, N9 etc.')
         self.parser.add_argument('-selelement', '--selection_element', default='', type=str, help='Used when -sel is "element"; pass element name(s) as string, e.g. H, C, O, N etc.')
+        self.parser.add_argument('-sym', '--symmetric', action='store_true', help='If true, consider both the A-->B and B-->A interactions; the result being the cylindr plot is symmetric along its length. Ordinarily we count the interactions just once')
 
         # parameters for calculating the CDF
         self.parser.add_argument('-l', '--cutoff_length', default=40, type=int, help='cylindrical shell length cutoff in angstroms (default = 40)')
-        self.parser.add_argument('-r', '--cutoff_radius', default=15, type=int, help='cylindrical shell radial cutoff in angstroms (default = 15)')
+        self.parser.add_argument('-r', '--cutoff_radius', default=20, type=int, help='cylindrical shell radial cutoff in angstroms (default = 20)')
         self.parser.add_argument('-b', '--first_frame', default=0, type=int, help='frame to start at (default = 0)')
         self.parser.add_argument('-e', '--end_frame', default=-1, type=int, help='frame to end at (default = 1)')
         self.parser.add_argument('-res', '--res', default=4, type=int, help='spatial resolution of integration grid in points per Angstrom (default = 4)')
@@ -37,4 +38,5 @@ class Config:
         self.parser.add_argument('-cmap', '--cmap', default='magma', type=str, help='cmap to use in plotting (default = magma)')
         self.parser.add_argument('-interp', '--interp', default='bilinear', type=str, help='interpolation to use in plot (default = bilinear')
         self.parser.add_argument('-font_size', '--font_size', default=20, type=int, help='Font size for the plot')
-        self.parser.add_argument('-fig_size', '--figure_size', default= 6, type=float, help='Figure size for the plot (height; inches?)')
+        self.parser.add_argument('-fig_size', '--figure_size', default= 8, type=float, help='Figure size for the plot (height; inches?)')
+        self.parser.add_argument('-diameter', action='store_true', help='If set, also output a diameter CDF with r mirrored to cover -R..+R.')
