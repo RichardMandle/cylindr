@@ -15,7 +15,7 @@ _cylindr_ optionally saves intermolecular distances for each frame in the trajec
 * tqdm
 * pickle
 
-* some MD data (tested using Gromacs .trr and .gro files)
+* some MD data (tested using Gromacs .trr/.xtc and .gro/.pdb files)
 
 # Returns
 * A cylindrical pair correlation function of the whole MD trajectory, e.g.:
@@ -39,12 +39,14 @@ _cylindr_ optionally saves intermolecular distances for each frame in the trajec
 * -res (optional; default = 4): spatial resolutuon in steps-per-angstrom.
 * -ori (optional): orientation of cylinder length along nematic director (nem, default); perpendicular to director (perp1, perp2) or along user supplied vector (user, requires -vec)
 * -vec (optional): 3vector for cylinder orientation; default is to orient along simulation principal orientation axis.
+* -diameter (optional): Prints both sides of the CDF; no new information, but could be useful for visualisation.
 
 * -save (optional; default = no): save intermolecular distances as a .npz file for later reading by _lookup.py_
 * -log (optional; default = no): Use log scale in CDF plot.
 * -min (optional; default = 0): Specify minimum value used in CDF plot.
 *  -max (optional): Specify maximum value used in CDF plot; default is to determine automatically.
 
+The generated data is saved to a compressed .npz file so you can retrieve the CDF and volume information for later replotting or further interrogation.
 
 # Usage Examples
 _cylindr_
