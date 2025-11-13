@@ -1,5 +1,6 @@
 import mdtraj as md
 import numpy as np
+import os
 from tqdm import tqdm
 
 def rotation_matrix_from_vectors(vec1, vec2):
@@ -62,12 +63,12 @@ class TrajectoryProcessor:
         
         # we should only bother to build sel if we are in hybrid mode 
         if self.config.args.selection_mode == 'hybrid':
-            self.calculate_sel()
-            
-            
+            self.calculate_sel()      
+
+ 
     def load_trajectory(self):
         print("Loading trajectory...")
-        self.traj = md.load_trr(self.config.args.trajectory, top=self.config.args.topology)
+        self.traj = md.load(self.config.args.trajectory, top=self.config.args.topology)
         self.traj = self.traj[self.config.args.first_frame:self.config.args.end_frame]
         
     def apply_orientation(self):
