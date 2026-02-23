@@ -2,7 +2,12 @@
 
 # cylindr - main code
 # Dr. R. J. Mandle - University of Leeds, 2022
+"""
+NOTE
 
+This is the old code, old version. The newer version is much faster. This is provided for testing and compatability basically
+RJM - 23/2/2026
+"""
 
 import mdtraj as md
 import numpy as np
@@ -307,3 +312,4 @@ if args.save == 'yes':
 
 if args.save != 'yes':
     print('\n CDF data is NOT being saved, to save rerun with -save "yes"')
+
